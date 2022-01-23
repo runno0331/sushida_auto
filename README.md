@@ -1,4 +1,6 @@
 # sushida_auto
+[寿司打](http://typingx0.net/sushida/play.html)の高級コースを自動で行うコード．
+寿司打では自動化ツールの使用は禁止されているので，観賞用．
 
 ## install python lib
 ```
