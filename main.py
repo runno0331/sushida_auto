@@ -2,6 +2,7 @@ from selenium import webdriver
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.chrome import service as fs
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.common.by import By
 import cv2
 import pyocr
 from PIL import Image
@@ -9,7 +10,7 @@ import time
 
 
 def main():
-	sushida_url = 'http://typingx0.net/sushida/play.html'
+	sushida_url = 'https://sushida.net/play.html'
 	DRIVER_PATH = 'somewhere' # TODO
 	img_name = 'screenshot.png'
 
@@ -21,25 +22,25 @@ def main():
 	driver.get(sushida_url)
 
 	target_xpath = '//*[@id="game"]/div'
-	webgl_element = driver.find_element_by_xpath(target_xpath)
+	webgl_element = driver.find_element(By.XPATH, target_xpath)
 	actions = ActionChains(driver)
 	actions.move_to_element(webgl_element).perform()
 
 	time.sleep(5)
 
-	center_x, center_y = (250, 250)
+	center_x, center_y = (0, 50)
 	actions = ActionChains(driver)
 	actions.move_to_element_with_offset(webgl_element, center_x, center_y).click().perform()
 
 	time.sleep(2)
-
-	center_x, center_y = (250, 300)
+	center_x, center_y = (0, 100)
+	actions = ActionChains(driver)
 	actions.move_to_element_with_offset(webgl_element, center_x, center_y).click().perform()
 
 	time.sleep(1)
 
 	target_xpath = '/html/body'
-	element = driver.find_element_by_xpath(target_xpath)
+	element = driver.find_element(By.XPATH, target_xpath)
 	element.send_keys(" ")
 
 	time.sleep(3)
